@@ -1,5 +1,5 @@
 # Data Ingestion and Data Load service for MongoDB
-Java SpringBoot application that provides an data ingestion and data load service for MongoDB. The service includes two REST endpoints: one for data ingestion (POST) and another for fetching data from MongoDB (GET). Additionally, the service includes JMeter scripts for benchmarking the ingestion and data load performance of MongoDB.
+Java SpringBoot application that provides an data ingestion and data load service for MongoDB. The service includes two REST endpoints: one for data ingestion (POST) and another for fetching data from MongoDB (GET). Additionally, the service includes JMeter scripts for benchmarking the ingestion and data load performance of MongoDB. Overall, utilizing jmeter in combination with this service allows for thorough and accurate measurement of the performance and capabilities of the MongoDB cluster.
 
 This ingestion and load service for MongoDB, along with the provided JMeter scripts, can be a powerful tool for benchmarking and measuring the performance of MongoDB. It can help you to test the performance of MongoDB under varying loads and conditions, and can be especially useful for testing the service in a production-like environment in the cloud. Additionally, the service can be customized based on the needs of the user, as long as they have prerequisite knowledge of Java and using Jmeter scripts.
 
@@ -13,17 +13,20 @@ This service can be deployed on a public cloud of your choice, such as AWS or GC
 
 
 ## Getting Started
-- Clone the repository to your local machine.
+- Clone the repository to your local machine
     ```
     git clone https://github.com/vittalpai/mdb-data-ingestion-load-service.git
     ```
-- Update the MongoDB Connection String in `DataService/src/main/java/com/example/demo/api/DataService.java` file.
+
+- Update the MongoDB Connection String and also customize the data ingestion/inset part based on your needs in the following file.
+    `DataService/src/main/java/com/example/demo/api/DataService.java`
+
 - Build the project.
     ```
     cd DataService
     mvn clean install
     ```
-- Run the following command to start the service, The service will be running on `http://localhost:8080`.
+- Run the following command to start the service, The service will be running on `http://localhost:8080`
     ```
     mvn spring-boot:run
     ```
@@ -33,10 +36,12 @@ This service can be deployed on a public cloud of your choice, such as AWS or GC
 - To fetch data, invoke a GET request to `http://localhost:8080/data/{id}`
 
 ## Running the JMeter Scripts
-1. Open JMeter and import the `JmeterScripts/data-ingestion.jmx` or `JmeterScripts/data-load.jmx` file.
-2. Update the thread count, ramp-up time, and target endpoint as per your needs.
-3. Run the script to generate the load.
+Using the provided jmeter scripts for data ingestion and load generation in conjunction with the java springboot application for the ingestion and load service for MongoDB allows for efficient and comprehensive benchmarking and performance testing. 
+
+- Open JMeter and import the `JmeterScripts/data-ingestion.jmx` or `JmeterScripts/data-load.jmx` file.
+- Update the thread count, ramp-up time, and target endpoint as per your needs.
+- Run the script to generate the load.
    ```
    jmeter -n -t data-load.jmx -l results.jtl
    ```
-4. Analyze the results using the generated `results.jtl` file.
+- Analyze the results using the generated `results.jtl` file.
